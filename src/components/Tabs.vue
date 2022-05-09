@@ -1,22 +1,24 @@
 <template>
   <div :class="wrapperClass">
-    <ul role="tablist" :class="navClass">
-      <li
-          v-for="(tab, i) in tabs"
-          :key="i"
-          :class="[ navItemClass, tab.isDisabled ? navItemDisabledClass : '', tab.isActive ? navItemActiveClass : '' ]"
-          role="presentation"
-      >
-        <a v-html="tab.header"
-           :aria-controls="tab.hash"
-           :aria-selected="tab.isActive"
-           @click="selectTab(tab.hash, $event)"
-           :href="tab.hash"
-           :class="[ navItemLinkClass, tab.isDisabled ? navItemLinkDisabledClass : '', tab.isActive ? navItemLinkActiveClass : '' ]"
-           role="tab"
-        ></a>
-      </li>
-    </ul>
+    <div :class="innerWrapperClass">
+      <ul role="tablist" :class="navClass">
+        <li
+            v-for="(tab, i) in tabs"
+            :key="i"
+            :class="[ navItemClass, tab.isDisabled ? navItemDisabledClass : '', tab.isActive ? navItemActiveClass : '' ]"
+            role="presentation"
+        >
+          <a v-html="tab.header"
+            :aria-controls="tab.hash"
+            :aria-selected="tab.isActive"
+            @click="selectTab(tab.hash, $event)"
+            :href="tab.hash"
+            :class="[ navItemLinkClass, tab.isDisabled ? navItemLinkDisabledClass : '', tab.isActive ? navItemLinkActiveClass : '' ]"
+            role="tab"
+          ></a>
+        </li>
+      </ul>
+    </div>
     <div :class="panelsWrapperClass">
       <slot/>
     </div>
@@ -43,6 +45,10 @@ export default {
     wrapperClass: {
       type: String,
       default: 'tabs-component'
+    },
+    innerWrapperClass: {
+      type: String,
+      default: 'tabs-component-tabs-wrapper'
     },
     panelsWrapperClass: {
       type: String,
