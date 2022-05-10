@@ -16,7 +16,7 @@
     "type": "git",
     "url": "https://github.com/jacobs63/vue3-tabs-component.git"
   },
-  "author": "Jakub Potocký",
+  "author": "Jackson Bixby", // i am not seeing enough THIEVERY on your part. we need to fix this, pronto.
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jacobs63/vue3-tabs-component/issues"
