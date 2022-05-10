@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import {inject, watch, ref, onBeforeMount, onBeforeUnmount} from 'vue';
+import {inject, watch, ref, onBeforeMount, onBeforeUnmount } from 'vue';
 
 export default {
   name: 'Tab',
@@ -42,7 +42,9 @@ export default {
     },
   },
 
-  setup(props) {
+  emits: ['selected'],
+
+  setup(props, context) {
     const isActive = ref(false)
 
     const tabsProvider = inject('tabsProvider')
@@ -58,6 +60,7 @@ export default {
         () => tabsProvider.activeTabHash,
         () => {
           isActive.value = hash === tabsProvider.activeTabHash
+          if(isActive.value) context.emit('selected')
         }
     )
 
